@@ -1,3 +1,56 @@
-@mixin placeholder() {
-	color: goldenrod;
+$__pantheon-columns: false !global;
+
+%cf {
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+%pantheon-column-base {
+	float: left;
+	width: 100%;
+}
+
+@mixin is-plan($columns) {
+	$__pantheon-columns: $columns !global;
+	@extend %cf;
+	@content;
+	$__pantheon-columns: false !global;
+}
+
+@mixin is-column($bps...) {
+	@if $__pantheon-columns == false {
+		@warn "is-column called outside of is-plan.";
+	}
+	$fraction: 100% / $__pantheon-columns;
+	@extend %pantheon-column-base;
+	@extend %cf;
+
+	@each $rule in $bps {
+		$bp: nth($rule, 1);
+		$size: nth($rule, 2);
+		@include bp($bp) {
+			width: ($fraction * $size);
+			@if length($rule) == 3 {
+				$offset: nth($rule, 3);
+				@include is-offset($bp $offset);
+			}
+		}
+	}
+}
+
+@mixin is-offset($bps...) {
+	@if $__pantheon-columns == false {
+		@warn "is-column called outside of is-plan.";
+	}
+	$fraction: 100% / $__pantheon-columns;
+
+	@each $rule in $bps {
+		@include bp(nth($rule, 1)) {
+			margin-left: ($fraction * nth($rule, 2));
+		}
+	}
 }

@@ -1,5 +1,89 @@
 @import "../../lib/pantheon";
+@import "../../lib/dd.breakpoints";
 
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
 body {
-	@include placeholder();
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	background: #F8F8F8;
+	padding: 20px;
+	font-size: 13px;
+}
+h1, h2, h3 {
+	font-family: "Open Sans Condensed", sans-serif;
+	font-weight: 300;
+}
+h1 {
+	font-size: 3em;
+}
+h1, h2 {
+	margin: 1em 0;
+}
+h3 {
+	margin: 0 0 1em;
+}
+
+%container-style {
+	background: #FFF;
+	border: solid 2px #47CCEA;
+	padding: 10px;
+
+	code {
+		display: inline-block;
+		padding: 4px;
+	}
+}
+%column-style-1 {
+	padding: 10px;
+	border: solid 2px #FC687B;
+	code {
+		background: #FC687B;
+	}
+}
+%column-style-2 {
+	padding: 10px;
+	border: solid 2px #FCB768;
+	code {
+		background: #FCB768;
+	}
+}
+
+.sample {
+	@extend %container-style;
+
+	@include is-plan(4) {
+		.big-item {
+			@extend %column-style-1;
+			@include is-column(m 4);
+		}
+		.item {
+			@extend %column-style-2;
+			@include is-column(m 2, xl 1);
+		}
+		@include bp(m, l) {
+			.item:nth-child(4) {
+				clear: left;
+			}
+		}
+	}
+}
+
+.offsets {
+	@extend %container-style;
+
+	@include is-plan(3) {
+		.left {
+			@extend %column-style-1;
+			@include is-column(m 1);
+		}
+		.right {
+			@extend %column-style-2;
+			@include is-column(m 1 1);
+		}
+	}
 }

@@ -1,30 +1,68 @@
 <!doctype html>
 <html class="no-js">
-	<head>
-		<meta charset="utf-8">
-		<title>Pantheon</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
+<head>
+	<meta charset="utf-8">
+	<title>Pantheon</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
 
-		<!-- build:css(.tmp) styles/main.css -->
-		<link rel="stylesheet" href="styles/main.css">
-		<!-- endbuild -->
-	</head>
-	<body>
-		<!--[if lt IE 10]>
-		  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-		<![endif]-->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans" type="text/css">
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+</head>
+<body>
+	<!--[if lt IE 10]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
 
-		<h1>Pantheon demos</h1>
+	<h1>Pantheon demos</h1>
 
-		<!-- Google Analytics -->
-		<script>
-		  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-		  function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-		  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-		  e.src='//www.google-analytics.com/analytics.js';
-		  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-		  ga('create','UA-XXXXX-X');ga('send','pageview');
-		</script>
-	</body>
+	<h2>Mixed sized column</h2>
+	<div class="sample">
+		<div class="big-item">
+			<h3><code>m 4</code></h3>
+			<p>Do nisi culpa sit qui sed aliquip dolor sit aliqua proident ex ut aute quis commodo dolor Duis id eu tempor laborum irure culpa incididunt.</p>
+		</div>
+		<div class="item">
+			<h3><code>m 2, xl 1</code></h3>
+			<p>Magna reprehenderit commodo aliqua cupidatat ut qui elit cupidatat amet tempor anim culpa culpa aute pariatur sit laboris officia esse velit dolor dolor ad irure dolore sit dolor tempor nulla ex est pariatur quis non veniam reprehenderit enim.</p>
+		</div>
+		<div class="item">
+			<h3><code>m 2, xl 1</code></h3>
+			<p>Ullamco eiusmod occaecat velit quis esse pariatur ut incididunt ullamco eiusmod aute Excepteur voluptate proident magna labore est esse do laborum enim commodo est adipisicing sit adipisicing esse dolor.</p>
+		</div>
+		<div class="item">
+			<h3><code>m 2, xl 1</code></h3>
+			<p>Pariatur laborum adipisicing minim sint irure anim elit Duis nostrud culpa exercitation fugiat sint occaecat dolor et quis officia proident amet veniam officia.</p>
+		</div>
+		<div class="item">
+			<h3><code>m 2, xl 1</code></h3>
+			<p>Adipisicing ut cupidatat adipisicing do dolore cupidatat dolore dolor reprehenderit esse qui laboris Duis ex voluptate fugiat laboris ullamco voluptate fugiat cupidatat nulla dolor in nostrud commodo commodo ex ad est dolore.</p>
+		</div>
+	</div>
+
+	<h2>Columns with offsets</h2>
+	<div class="offsets">
+		<div class="left">
+			<h3><code>m 1</code></h3>
+			<p>Pariatur laborum adipisicing minim sint irure anim elit Duis nostrud culpa exercitation fugiat sint occaecat dolor et quis officia proident amet veniam officia.</p>
+		</div>
+		<div class="right">
+			<h3><code>m 1 1</code></h3>
+			<p>Ullamco eiusmod occaecat velit quis esse pariatur ut incididunt ullamco eiusmod aute Excepteur voluptate proident magna labore est esse do laborum enim commodo est adipisicing sit adipisicing esse dolor.</p>
+		</div>
+	</div>
+
+	<!-- Google Analytics -->
+	<script>
+	  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+	  function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+	  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+	  e.src='//www.google-analytics.com/analytics.js';
+	  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+	  ga('create','UA-XXXXX-X');ga('send','pageview');
+	</script>
+</body>
 </html>
