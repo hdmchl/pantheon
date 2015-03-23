@@ -1,1 +1,3 @@
-# justaplan
+# Pantheon
+
+This is a placeholder repo for [@lachlanmcdonald](//twitter.com/lachlanmcdonald) and [@hadi_michael](//twitter.com/hadi_michael) to experiment with grid systems...
