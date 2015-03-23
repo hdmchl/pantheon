@@ -1,0 +1,6 @@
+{
+  "name": "pantheon",
+  "dependencies": {
+    "ddbreakpoints": "~1.0.2"
+  }
+}
