@@ -1,3 +1,4 @@
+$__pantheon-padding: false !global;
 $__pantheon-columns: false !global;
 
 %cf {
@@ -14,11 +15,15 @@ $__pantheon-columns: false !global;
 	width: 100%;
 }
 
-@mixin is-plan($columns) {
+@mixin is-plan($columns, $padding: false) {
 	$__pantheon-columns: $columns !global;
 	@extend %cf;
+	@if $padding != false {
+		@include has-padding($padding);
+	}
 	@content;
 	$__pantheon-columns: false !global;
+	$__pantheon-padding: false !global;
 }
 
 @mixin is-column($bps...) {
@@ -29,6 +34,11 @@ $__pantheon-columns: false !global;
 	@extend %pantheon-column-base;
 	@extend %cf;
 
+	@if $__pantheon-padding != false {
+		padding-left: $__pantheon-padding;
+		padding-right: $__pantheon-padding;
+	}
+
 	@each $rule in $bps {
 		$bp: nth($rule, 1);
 		$size: nth($rule, 2);
@@ -36,13 +46,13 @@ $__pantheon-columns: false !global;
 			width: ($fraction * $size);
 			@if length($rule) == 3 {
 				$offset: nth($rule, 3);
-				@include is-offset($bp $offset);
+				@include has-offset($bp $offset);
 			}
 		}
 	}
 }
 
-@mixin is-offset($bps...) {
+@mixin has-offset($bps...) {
 	@if $__pantheon-columns == false {
 		@warn "is-column called outside of is-plan.";
 	}
@@ -53,4 +63,10 @@ $__pantheon-columns: false !global;
 			margin-left: ($fraction * nth($rule, 2));
 		}
 	}
+}
+
+@mixin has-padding($padding) {
+	$__pantheon-padding: $padding !global;
+	margin-left: -$__pantheon-padding;
+	margin-right: -$__pantheon-padding;
 }

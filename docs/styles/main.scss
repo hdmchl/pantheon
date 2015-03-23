@@ -21,11 +21,20 @@ h1, h2, h3 {
 h1 {
 	font-size: 3em;
 }
-h1, h2 {
+h1, h2, h3 {
 	margin: 1em 0;
 }
-h3 {
+h4 {
 	margin: 0 0 1em;
+}
+p code {
+	white-space: nowrap;
+	color: #B40037;
+}
+pre {
+	background: #FFF;
+	border: solid 1px #EAEAEA;
+	padding: .5em;
 }
 
 %container-style {
@@ -84,6 +93,51 @@ h3 {
 		.right {
 			@extend %column-style-2;
 			@include is-column(m 1 1);
+		}
+	}
+}
+
+.twitter-demo {
+	@extend %container-style;
+}
+.twitter {
+	> div {
+		@extend %column-style-1;
+	}
+
+	@include is-plan(9) {
+		.a {
+			@include is-column(m 3, l 1);
+		}
+		.b {
+			@include is-column(m 2);
+		}
+		.c {
+			@include is-column(m 3);
+		}
+		.d {
+			@include is-column(m 4);
+		}
+		.e {
+			@include is-column(m 4);
+		}
+		.f {
+			@include is-column(m 5);
+		}
+		.g {
+			@include is-column(m 9);
+		}
+	}
+}
+
+.padding-demo {
+	code {
+		@extend %column-style-1;
+		display: block;
+	}
+	@include is-plan(6, 20px) {
+		.column {
+			@include is-column(xs 2, s 3, m 2, l 1);
 		}
 	}
 }
