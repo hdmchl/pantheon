@@ -96,16 +96,16 @@
 		<div class="column"><code>Column</code></div>
 	</div>
 	<h3>Usage</h3>
-	<p>It is often not desirable to have columns that are flush against each-other. Padding can be adding to the plan using the <code>has-padding</code> mixin.</p>
+	<p>It is often not desirable to have columns that are flush against each-other. Padding can be adding to the plan using the <code>has-padding</code> mixin within the <code>is-plan</code> scope. Subsequent calls to <code>is-column</code> will automatically use the padding defined in the plan.</p>
 	<p>In the demo above, <code>20px</code> of spacing has been added:</p>
 	<pre>@include is-plan(6) {
     @include has-padding(20px);
-    .column {
-        @include is-column(xs 2, s 3, m 2, l 1);
-    }
+    &hellip;
 }</pre>
 	<p>Padding can also be added via a shorthand on the <code>is-plan</code> mixin:</p>
-	<pre>@include is-plan(6, 20px);</pre>
+	<pre>@include is-plan(6, 20px) {
+    &hellip;
+}</pre>
 
 	<p>Any unit can be used as padding, i.e. <code>px</code> or <code>em</code> (although using a <code>%</code> is counter-intuitive). Be careful, padding works by adding a negative margin to the containing element. Overriding the left\right margin will result in overflow issues.</p>
 
