@@ -195,6 +195,14 @@ module.exports = function(grunt) {
 				'sass',
 				'copy:styles'
 			]
+		},
+
+		// Deploy documentation to github pages
+		'gh-pages': {
+			options: {
+				base: 'dist'
+			},
+			src: ['**']
 		}
 	});
 
@@ -224,6 +232,12 @@ module.exports = function(grunt) {
 		'rev',
 		'usemin',
 		'htmlmin'
+	]);
+
+	grunt.registerTask('deploy', [
+		'build',
+		'gh-pages-clean',
+		'gh-pages'
 	]);
 
 };
