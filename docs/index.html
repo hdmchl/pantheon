@@ -1,30 +1,153 @@
 <!doctype html>
 <html class="no-js">
-	<head>
-		<meta charset="utf-8">
-		<title>Pantheon</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
+<head>
+	<meta charset="utf-8">
+	<title>Pantheon</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
 
-		<!-- build:css(.tmp) styles/main.css -->
-		<link rel="stylesheet" href="styles/main.css">
-		<!-- endbuild -->
-	</head>
-	<body>
-		<!--[if lt IE 10]>
-		  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-		<![endif]-->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans" type="text/css">
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+</head>
+<body>
+	<!--[if lt IE 10]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
 
-		<h1>Pantheon demos</h1>
+	<h1>Pantheon</h1>
 
-		<!-- Google Analytics -->
-		<script>
-		  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-		  function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-		  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-		  e.src='//www.google-analytics.com/analytics.js';
-		  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-		  ga('create','UA-XXXXX-X');ga('send','pageview');
-		</script>
-	</body>
+	<h2>Mixins</h2>
+	<h3><code>is-plan($columns, $padding: false)</code></h3>
+	<p>TODO</p>
+
+	<h3><code>is-column($bps&hellip;)</code></h3>
+	<p>TODO</p>
+
+	<h3><code>has-offset($bps&hellip;)</code></h3>
+	<p>TODO</p>
+
+	<h3><code>has-padding($padding)</code></h3>
+	<p>TODO</p>
+
+	<h2>Mixed sized column</h2>
+	<div class="sample">
+		<div class="big-item">
+			<h4><code>m 4</code></h4>
+			<p>Do nisi culpa sit qui sed aliquip dolor sit aliqua proident ex ut aute quis commodo dolor Duis id eu tempor laborum irure culpa incididunt.</p>
+		</div>
+		<div class="item">
+			<h4><code>m 2, xl 1</code></h4>
+			<p>Magna reprehenderit commodo aliqua cupidatat ut qui elit cupidatat amet tempor anim culpa culpa aute pariatur sit laboris officia esse velit dolor dolor ad irure dolore sit dolor tempor nulla ex est pariatur quis non veniam reprehenderit enim.</p>
+		</div>
+		<div class="item">
+			<h4><code>m 2, xl 1</code></h4>
+			<p>Ullamco eiusmod occaecat velit quis esse pariatur ut incididunt ullamco eiusmod aute Excepteur voluptate proident magna labore est esse do laborum enim commodo est adipisicing sit adipisicing esse dolor.</p>
+		</div>
+		<div class="item">
+			<h4><code>m 2, xl 1</code></h4>
+			<p>Pariatur laborum adipisicing minim sint irure anim elit Duis nostrud culpa exercitation fugiat sint occaecat dolor et quis officia proident amet veniam officia.</p>
+		</div>
+		<div class="item">
+			<h4><code>m 2, xl 1</code></h4>
+			<p>Adipisicing ut cupidatat adipisicing do dolore cupidatat dolore dolor reprehenderit esse qui laboris Duis ex voluptate fugiat laboris ullamco voluptate fugiat cupidatat nulla dolor in nostrud commodo commodo ex ad est dolore.</p>
+		</div>
+	</div>
+
+	<h2>Offsets</h2>
+
+	<h3>Demo</h3>
+	<div class="offsets">
+		<div class="left">
+			<h4><code>m 1</code></h4>
+			<p>No offset</p>
+		</div>
+		<div class="right">
+			<h4><code>m 1 1</code></h4>
+			<p>Offset of one column.</p>
+		</div>
+	</div>
+	<h3>Usage</h3>
+	<p>Offsets allows us to create column-width gaps without having to add empty elements.</p>
+	<p>Offsets can be added explicitly with the <code>has-offset</code> mixin, or using the shorthand in <code>is-column</code>.</p>
+	<p>The <code>has-offset</code> mixin takes similar parameters to <code>is-column</code>. It accepts a comma-separated list of breakpoints. The first item is the breakpoint name and the second argument is the number of columns to offset.</p>
+	<pre>.column {
+    @include is-column(m 1);
+    @include has-offset(m 1);
+}</pre>
+	<p>Or using the short-hand:</p>
+	<pre>.column {
+    @include is-column(m 1 1);
+}</pre>
+	<p>Offsets are inherited by subsequent breakpoints and must be overridden when no longer desired. For example, to set a offset on the <em>medium</em> breakpoint and remove on <em>large</em>, we would write:</p>
+	<pre>@include is-column(m 1 1, l 1 0);</pre>
+
+
+	<h2>Padding</h2>
+	<h3>Demo</h3>
+	<div class="padding-demo">
+		<div class="column"><code>Column</code></div>
+		<div class="column"><code>Column</code></div>
+		<div class="column"><code>Column</code></div>
+		<div class="column"><code>Column</code></div>
+		<div class="column"><code>Column</code></div>
+		<div class="column"><code>Column</code></div>
+	</div>
+	<h3>Usage</h3>
+	<p>It is often not desirable to have columns that are flush against each-other. Padding can be adding to the plan using the <code>has-padding</code> mixin within the <code>is-plan</code> scope. Subsequent calls to <code>is-column</code> will automatically use the padding defined in the plan.</p>
+	<p>In the demo above, <code>20px</code> of spacing has been added:</p>
+	<pre>@include is-plan(6) {
+    @include has-padding(20px);
+    &hellip;
+}</pre>
+	<p>Padding can also be added via a shorthand on the <code>is-plan</code> mixin:</p>
+	<pre>@include is-plan(6, 20px) {
+    &hellip;
+}</pre>
+
+	<p>Any unit can be used as padding, i.e. <code>px</code> or <code>em</code> (although using a <code>%</code> is counter-intuitive). Be careful, padding works by adding a negative margin to the containing element. Overriding the left\right margin will result in overflow issues.</p>
+
+	<h2>Twitter-like Grid</h2>
+	<h3>Demo</h3>
+	<div class="twitter-demo">
+		<div class="twitter">
+			<div class="a"><code>A</code></div>
+			<div class="a"><code>A</code></div>
+			<div class="a"><code>A</code></div>
+			<div class="a"><code>A</code></div>
+			<div class="a"><code>A</code></div>
+			<div class="a"><code>A</code></div>
+			<div class="a"><code>A</code></div>
+			<div class="a"><code>A</code></div>
+			<div class="a"><code>A</code></div>
+		</div>
+		<div class="twitter">
+			<div class="b"><code>B</code></div>
+			<div class="c"><code>C</code></div>
+			<div class="d"><code>D</code></div>
+		</div>
+		<div class="twitter">
+			<div class="e"><code>E</code></div>
+			<div class="f"><code>F</code></div>
+		</div>
+		<div class="twitter">
+			<div class="g"><code>G</code></div>
+		</div>
+	</div>
+	<h3>Notes</h3>
+	<p>Included above is an example of the Twitter Bootstrap grid, created using the <em>Pantheon</em> mixins. Where Bootstrap requires that the layout be defined in the DOM by adding classes, the classes we chose have no relation to the layout.</p>
+	<p>Instead, you would develop your HTML using a mobile-first approach, then add the layout afterwards. A proper separation of concerns. This means we can avoid classes like <code>.plan-9</code> and <code>.col-sm-5</code>.</p>
+
+	<!-- Google Analytics -->
+	<script>
+	  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+	  function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+	  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+	  e.src='//www.google-analytics.com/analytics.js';
+	  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+	  ga('create','UA-XXXXX-X');ga('send','pageview');
+	</script>
+</body>
 </html>
