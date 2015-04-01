@@ -6,8 +6,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,500' rel='stylesheet' type='text/css'>
 	<!-- build:css(.tmp) styles/main.css -->
 	<link rel="stylesheet" href="styles/main.css">
 	<!-- endbuild -->
@@ -19,18 +18,13 @@
 
 	<h1>Pantheon</h1>
 
+	<div class="bp">Breakpoint</div>
+
 	<h2>Mixins</h2>
-	<h3><code>is-plan($columns, $padding: false)</code></h3>
-	<p>TODO</p>
-
-	<h3><code>is-column($bps&hellip;)</code></h3>
-	<p>TODO</p>
-
-	<h3><code>has-offset($bps&hellip;)</code></h3>
-	<p>TODO</p>
-
-	<h3><code>has-padding($padding)</code></h3>
-	<p>TODO</p>
+	<h3><code class="language-scss">@mixin is-plan($columns, $padding: false)</code></h3>
+	<h3><code class="language-scss">@mixin is-column($bps&hellip;)</code></h3>
+	<h3><code class="language-scss">@mixin has-offset($bps&hellip;)</code></h3>
+	<h3><code class="language-scss">@mixin has-padding($padding)</code></h3>
 
 	<h2>Mixed sized column</h2>
 	<div class="sample">
@@ -73,14 +67,14 @@
 	<p>Offsets allows us to create column-width gaps without having to add empty elements.</p>
 	<p>Offsets can be added explicitly with the <code>has-offset</code> mixin, or using the shorthand in <code>is-column</code>.</p>
 	<p>The <code>has-offset</code> mixin takes similar parameters to <code>is-column</code>. It accepts a comma-separated list of breakpoints. The first item is the breakpoint name and the second argument is the number of columns to offset.</p>
-	<pre>.column {
+	<pre><code class="language-scss">.column {
     @include is-column(m 1);
     @include has-offset(m 1);
-}</pre>
+}</code></pre>
 	<p>Or using the short-hand:</p>
-	<pre>.column {
+	<pre><code class="language-scss">.column {
     @include is-column(m 1 1);
-}</pre>
+}</code></pre>
 	<p>Offsets are inherited by subsequent breakpoints and must be overridden when no longer desired. For example, to set a offset on the <em>medium</em> breakpoint and remove on <em>large</em>, we would write:</p>
 	<pre>@include is-column(m 1 1, l 1 0);</pre>
 
@@ -98,47 +92,16 @@
 	<h3>Usage</h3>
 	<p>It is often not desirable to have columns that are flush against each-other. Padding can be adding to the plan using the <code>has-padding</code> mixin within the <code>is-plan</code> scope. Subsequent calls to <code>is-column</code> will automatically use the padding defined in the plan.</p>
 	<p>In the demo above, <code>20px</code> of spacing has been added:</p>
-	<pre>@include is-plan(6) {
+	<pre><code class="language-scss">@include is-plan(6) {
     @include has-padding(20px);
     &hellip;
-}</pre>
+}</code></pre>
 	<p>Padding can also be added via a shorthand on the <code>is-plan</code> mixin:</p>
-	<pre>@include is-plan(6, 20px) {
+	<pre><code class="language-scss">@include is-plan(6, 20px) {
     &hellip;
-}</pre>
+}</code></pre>
 
 	<p>Any unit can be used as padding, i.e. <code>px</code> or <code>em</code> (although using a <code>%</code> is counter-intuitive). Be careful, padding works by adding a negative margin to the containing element. Overriding the left\right margin will result in overflow issues.</p>
-
-	<h2>Twitter-like Grid</h2>
-	<h3>Demo</h3>
-	<div class="twitter-demo">
-		<div class="twitter">
-			<div class="a"><code>A</code></div>
-			<div class="a"><code>A</code></div>
-			<div class="a"><code>A</code></div>
-			<div class="a"><code>A</code></div>
-			<div class="a"><code>A</code></div>
-			<div class="a"><code>A</code></div>
-			<div class="a"><code>A</code></div>
-			<div class="a"><code>A</code></div>
-			<div class="a"><code>A</code></div>
-		</div>
-		<div class="twitter">
-			<div class="b"><code>B</code></div>
-			<div class="c"><code>C</code></div>
-			<div class="d"><code>D</code></div>
-		</div>
-		<div class="twitter">
-			<div class="e"><code>E</code></div>
-			<div class="f"><code>F</code></div>
-		</div>
-		<div class="twitter">
-			<div class="g"><code>G</code></div>
-		</div>
-	</div>
-	<h3>Notes</h3>
-	<p>Included above is an example of the Twitter Bootstrap grid, created using the <em>Pantheon</em> mixins. Where Bootstrap requires that the layout be defined in the DOM by adding classes, the classes we chose have no relation to the layout.</p>
-	<p>Instead, you would develop your HTML using a mobile-first approach, then add the layout afterwards. A proper separation of concerns. This means we can avoid classes like <code>.plan-9</code> and <code>.col-sm-5</code>.</p>
 
 	<!-- Google Analytics -->
 	<script>
@@ -149,5 +112,8 @@
 	  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 	  ga('create','UA-XXXXX-X');ga('send','pageview');
 	</script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
 </body>
 </html>

@@ -1,0 +1,21 @@
+.bp {
+	font-size: 1.2em;
+	margin: 0 0 1em;
+	background: #CCC;
+	color: #333;
+	padding: 6px 0 6px 8px;
+	display: inline-block;
+
+	&:after {
+		font-family: monospace;
+		padding: 6px 16px;
+		margin: 0 0 0 6px;
+		background: #000;
+		color: #FFF;
+		@each $bp in (xxs, xs, s, m, l, xl, xxl) {
+			@include bp($bp) {
+				content: "#{$bp}";
+			}
+		}
+	}
+}
