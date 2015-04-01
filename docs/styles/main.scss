@@ -1,5 +1,6 @@
 @import "../bower_components/ddbreakpoints/lib/dd.breakpoints";
 @import "../../lib/pantheon";
+@import "debug";
 
 html {
 	box-sizing: border-box;
@@ -7,16 +8,17 @@ html {
 *, *:before, *:after {
 	box-sizing: inherit;
 }
+
 body {
-	font-family: "Open Sans", sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-weight: 400;
 	background: #F8F8F8;
 	padding: 20px;
 	font-size: 13px;
 }
 h1, h2, h3 {
-	font-family: "Open Sans Condensed", sans-serif;
-	font-weight: 300;
+	font-family: "Roboto", sans-serif;
+	font-weight: bold;
 }
 h1 {
 	font-size: 3em;
@@ -32,15 +34,19 @@ p code {
 	color: #B40037;
 }
 pre {
+	font-family: monospace;
 	background: #FFF;
+	font-size: 1.2em;
+	font-weight: 400;
 	border: solid 1px #EAEAEA;
 	padding: .5em;
+	line-height: 1.5;
 }
 
 %container-style {
 	background: #FFF;
 	border: solid 2px #47CCEA;
-	padding: 10px;
+	padding: 12px;
 
 	code {
 		display: inline-block;
@@ -48,17 +54,19 @@ pre {
 	}
 }
 %column-style-1 {
-	padding: 10px;
-	border: solid 2px #FC687B;
+	padding: 12px;
+	border: solid 4px #E2216F;
+
 	code {
-		background: #FC687B;
+		background: #E2216F;
 	}
 }
 %column-style-2 {
-	padding: 10px;
-	border: solid 2px #FCB768;
+	padding: 12px;
+	border: solid 4px #EAB338;
+
 	code {
-		background: #FCB768;
+		background: #EAB338;
 	}
 }
 
@@ -138,6 +146,52 @@ pre {
 	@include is-plan(6, 20px) {
 		.column {
 			@include is-column(xs 2, s 3, m 2, l 1);
+		}
+	}
+}
+
+.twitter-comparison {
+	.news {
+		@include is-plan(6) {
+			.big-feature {
+				@include is-column(m 6, l 4);
+			}
+			.feature {
+				@include is-column(m 3, l 2);
+			}
+			.article {
+				@include is-column(m 3, l 2);
+			}
+		}
+	}
+
+	.news {
+		background: #CCC;
+
+		> div {
+			background: #FFF;
+			padding: 6px;
+			font-weight: bold;
+
+			> h2 {
+				margin: 0;
+				padding: 12px;
+			}
+		}
+		> .big-feature {
+			> h2 {
+				border: solid 4px #E2216F;
+			}
+		}
+		> .feature {
+			> h2 {
+				border: solid 4px #EAB338;
+			}
+		}
+		> .article {
+			> h2 {
+				border: solid 4px #72C9D9;
+			}
 		}
 	}
 }
